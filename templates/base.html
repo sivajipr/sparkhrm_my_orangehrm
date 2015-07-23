@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sparkhrm</title>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<!-- font awsome -->
+		<link rel="stylesheet" href="/static/css/font-awesome.min.css">
+		<!-- datepicker -->
+		 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" href="/static/css/style.css">
+		<script src="http://code.jquery.com/jquery-1.11.3.min.js" ></script>
+		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+
+</head>
+	<body>
+		<div class='fd'>
+			<img src="/static/images/orangehrm.png" border="2" width="266" style="float:left";height="67"  />
+			{% block welcome %}
+			<div class='bar'>
+				<p>Welcome {{user}}</p>
+				{% if user.is_staff %}
+				<p> <a href="/register">Register</a></p>
+				{% endif %}
+				&nbsp;&nbsp;<p><a href="/logout">Logout</a></p>
+			</div>
+		</div>
+		<div class='rig'></div>
+		{% endblock %}
+		<div class='top-menu'>
+		{% block topmenu %}
+			<ul class='nav'>
+				<li class='l1' id='home'><a class='alignmnt' href='/home'>Home</a></li>
+				<li class="l2 dropdown">
+                        <a href="#" data-toggle="dropdown" class="alignmnt dropdown-toggle leave-head">Leave<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        	<li><a href="/leave/apply">apply</a></li>
+                        	{% if user.is_staff %}
+                        	<li><a href="/leave/pending">Leave pending</a></li>
+                        	<li><a href="/employee/assign">Assign leave</a></li>
+                        	<li><a href="/leave/adminsummery">leave summery</a></li>
+                        	{% else %}
+                        	<li><a href="/leave/summery">leave summery</a></li>
+                        	{% endif %}
+                        	<li><a href="/leave/myleave">my leave</a></li>
+                        </ul>
+            	</li>
+				<li class='l1' id='time'><a class='alignmnt' href="/employee/upload">Csv</a></li>
+				<li class='l1' id='benefits'>Benefits</li>
+				<li class='l1' id='performance'>Performance</li>
+				<li class='l1' id='ess'>ESS</li>
+				<li class='l1' id='bugtracker'>Bug Tracker</li>
+				<li class='l1' id='help'>Help</li>
+			</ul>
+		{% endblock %}
+		</div>
+		<div class="container">
+		{% block content %}{% endblock %}
+		</div>
+		</body>
+		

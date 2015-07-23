@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class='row'>
+				<div class='col-md-12'>
+					<div class='maincontent'>
+						<div class='mainheading'>
+							<h4>Leave requests</h4>
+						</div>
+{% if leaves %}
+{% for leave in leaves %}
+<div style='padding:10px 0px 0px 10px;'>
+{{leave.employee}} requested a leave from {{leave.from_date}} to {{leave.to_date}} because of {{leave.comment}}
+		
+		<a href='/leave/{{leave.id}}/accept'><input type="button" class="btn btn-default" value='Accept'/></a>
+		<a href='/leave/{{leave.id}}/reject'><input type="button" class="btn btn-default" value='Reject'></a></div>
+{% endfor %}
+{% else %}
+There is no leave requests
+{% endif %}
+<div class='clearfix' style='border-bottom:2px solid #FAD163; width:100%; margin-bottom:20px'></div>
+</div></div></div>
+{% endblock %}

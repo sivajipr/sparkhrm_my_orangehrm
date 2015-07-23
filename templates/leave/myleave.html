@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class='row'>
+				<div class='col-md-12'>
+					<div class='maincontent'>
+						<div class='mainheading'>
+							<h4>Your leave details</h4>
+						</div>
+						{% for leave in leaves %}
+						<div style='padding:10px 0px 0px 10px'>
+						{% ifequal leave.status 0 %}
+						your leave for {{leave.comment}} waiting for the approval&nbsp;<i class="fa fa-spinner fa-spin" style='color:blue'></i>
+						{% endifequal %}
+						{% ifequal leave.status 1 %}
+						your leave for {{leave.comment}} has been approved&nbsp;<i class="fa fa-check-square" style='color:green'></i>
+						{% endifequal %}
+						{% ifequal leave.status 2 %}
+						your leave for {{leave.comment}} has been rejected&nbsp;<i class="fa fa-times-circle" style='color:red'></i>
+						{% endifequal %}
+						</div>
+						{% endfor %}
+
+						<div class='clearfix' style='border-bottom:2px solid #FAD163; width:100%; margin-bottom:20px'></div>
+</div></div></div>
+{% endblock %}

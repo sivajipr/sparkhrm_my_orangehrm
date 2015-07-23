@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<div class='row'>
+				<div class='col-md-12'>
+					<div class='maincontent'>
+						<table border="0" cellpadding='0' cellspacing='0' class='data-table'>
+            <thead>
+                    <tr>
+                    <td valign='top'>&nbsp;Employee Name</td>
+                    <td align='center'>Leave Entitled<div>(Days)</div></td>
+                    <td align='center'>Leave Scheduled<div>(Days)</div></td>
+                    <td align='center'>Leave Taken<div>(Days)</div></td>	
+                    <td align='center'>Leave Balance<div>(Days)</div></td>
+                    </tr>
+            </thead>
+            <tbody>
+            	{% for employee in employees %}
+            	<tr class='odd'>
+                    <td>&nbsp;<a href='/leave/{{employee.id}}/admin-summery' style='color:black'>{{employee.get_full_name}}</a></td>
+                    <td align='center'><div class='text-alignment-right'>{{employee.assignleave.get_count}}</div></td>
+                    <td align='center'><div class='text-alignment-right'>0.00</div></td>
+                    <td align='center'><div class='text-alignment-right'>{{casual_leave_taken}}</div></td>
+                    <td align='center'><div class='text-alignment-right'>{{casual_leave_diff}}</div></td>
+                </tr>
+                {% endfor %}
+               </tbody>
+
+               		</table>
+               		<div class='clearfix' style='border-bottom:2px solid #FAD163; width:100%; margin-bottom:20px'></div>
+
+					</div>
+				</div>
+</div>	
+{% endblock %}

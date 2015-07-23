@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<div class='row'>
+				<div class='col-md-12'>
+					<div class='maincontent'>
+						<table border="0" cellpadding='0' cellspacing='0' class='data-table'>
+            <thead>
+                    <tr>
+                    <td valign='top'>&nbsp;Employee Name</td>
+                    <td valign='top'>&nbsp;Leave Type</td>
+                    <td align='center'>Leave Entitled<div>(Days)</div></td>
+                    <td align='center'>Leave Scheduled<div>(Days)</div></td>
+                    <td align='center'>Leave Taken<div>(Days)</div></td>	
+                    <td align='center'>Leave Balance<div>(Days)</div></td>
+                    </tr>
+            </thead>
+            <tbody>
+                <tr class='odd'>
+                    <td>&nbsp;{{employee.get_full_name}}</td>
+                    <td>Casual Leave</td>
+                    <td align='center'><div class='text-alignment-right'>{{assign_leave.casual}}</div></td>
+                    <td align='center'><div class='text-alignment-right'>0.00</div></td>
+                    <td align='center'><div class='text-alignment-right'>{{casual_leave_taken}}</div></td>
+                    <td align='center'><div class='text-alignment-right'>{{casual_leave_diff}}</div></td>
+                </tr>
+                <tr class='even'>
+                    <td>&nbsp;{{employee.get_full_name}}</td>
+                    <td>Sick Leave</td>
+                    <td align='center'><div class='text-alignment-right'>{{assign_leave.sick}}</div></td>
+                    <td align='center'><div class='text-alignment-right'>0.00</div></td>
+                    <td align='center'><div class='text-alignment-right'>{{sick_leave_taken}}</div></td>
+                    <td align='center'><div class='text-alignment-right'>{{sick_leave_diff}}</div></td>
+                </tr>
+                <tr class='odd'>
+                    <td>&nbsp;{{employee.get_full_name}}</td>
+                    <td>Optional Leave</td>
+                    <td align='center'><div class='text-alignment-right'>{{assign_leave.optional}}</div></td>
+                    <td align='center'><div class='text-alignment-right'>0.00</div></td>
+                    <td align='center'><div class='text-alignment-right'>{{optional_leave_taken}}</div></td>
+                    <td align='center'><div class='text-alignment-right'>{{optional_leave_diff}}</div></td>
+                </tr>
+                </tbody>
+                </table>
+                <div class='clearfix' style='border-bottom:2px solid #FAD163; width:100%; margin-bottom:20px'></div>
+
+
+						</div></div></div>
+{% endblock %}
